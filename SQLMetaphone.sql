@@ -32,7 +32,7 @@ DECLARE @This CHAR, @Next CHAR, @Following CHAR, @Previous CHAR, @silent BIT;
 
 SELECT @String = UPPER(LTRIM(COALESCE(@String, ''))); --trim and upper case
 SELECT @where= PATINDEX ('%[^A-Z]%',@String COLLATE Latin1_General_CI_AI ) 
-WHILE  @where>0 --strip out all non-ascii characters!
+WHILE  @where>0 --strip out all non-alphabetic characters!
 	BEGIN
 	SELECT @String=STUFF(@string,@where,1,'')
 	SELECT @where=PATINDEX ('%[^A-Z]%',@String COLLATE Latin1_General_CI_AI ) 
